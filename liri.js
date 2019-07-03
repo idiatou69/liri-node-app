@@ -51,29 +51,32 @@ function concertThis() {
     axios.get("https://rest.bandsintown.com/artists/" + userQuery + "/events?app_id=codingbootcamp").then(function(response)
     {
         // if there is no error give us a 200 status code everything ok!
-        if ( response.statusCode === 200) {
-            // capture data and use JSON to format
-            var userBand = JSON.parse(body);
-            // parse data and use for loop to access paths to data
+        //console.log(response)
 
-            // for (var i = 0; i < userBand.length; i++) 
+         // capture data and use JSON to format
+         var userBand = JSON.parse(response);
+         // parse data and use for loop to access paths to data
 
-            if (userBand.length > 0) {
-                for (i = 0; i < 1; i++) {
-                    // console desired data using E6 syntax
-                    console.log("\nBA DA BOP! thats for you ...\n\Artist: " + userBand[i].lineUP[0] + "\nVenue: " + userBand[i]
-                        .venue.name + "\venue location: " + userBand[i].venue.latitude.serBand[i].venue.longitude + "\nVenue City:" +
-                        userBand[i].venue.city.userBand[i].venue.country)
+         // for (var i = 0; i < userBand.length; i++) 
 
-                    // moment.js to format the data mm/dd/yyyy
-                    var concertDate = moment(userBand[i].dateTime).format("mm/dd/yyy  hh:00 A");
-                    console.log("date and time: ${concertDate}\n\n- - - -");
-                };
+         if (userBand.length > 0) {
+             for (i = 0; i < 1; i++) {
+                 // console desired data using E6 syntax
+                 console.log("\nBA DA BOP! thats for you ...\n\Artist: " + userBand[i].lineUP[0] + "\nVenue: " + userBand[i]
+                     .venue.name + "\venue location: " + userBand[i].venue.latitude.serBand[i].venue.longitude + "\nVenue City:" +
+                     userBand[i].venue.city.userBand[i].venue.country)
 
-            } else {
-                console.log('band or consert not found!');
-            };
-        };
+                 // moment.js to format the data mm/dd/yyyy
+                 var concertDate = moment(userBand[i].dateTime).format("mm/dd/yyy  hh:00 A");
+                 console.log("date and time: ${concertDate}\n\n- - - -");
+             };
+
+         } else {
+             console.log('band or consert not found!');
+         };
+        // if ( response.statusCode === 200) {
+           
+        // };
     });
 
 }
@@ -100,17 +103,20 @@ function concertThis() {
         console.log("\n - - - - \n\nSEARCHING FOR..." + userQuery);
         if (userQuery) { userQuery + "mr nobody"; };
         // request omdb api
-        request("http://www.omdbapi.com/?t=" + userQuery + "&apikey=trilogy" + function (error, response) {
-            var userMovie = JSON.parse(body);
-            // creating a path
-            var ratingsArray = userMovie.ratings;
-            if (ratingsArray.length > 2) {
+        request("http://www.omdbapi.com/?t=" + userQuery + "&apikey=trilogy" , function (error, response) {
+            var userMovie = JSON.parse(response.body);
+            // // creating a path
+            // var ratingsArray = userMovie.ratings;
+            // if (ratingsArray.length > 2) {
 
-            }
+            // }
             if (!error && response.statusCode === 200) {
+                // console.log("rating: ",JSON.parse(response.body));
+                
+
                 console.log("\nBA DA BOP! that's for you...\nTitle:" + userMovie.Title + "\nCast:" + userMovie.Actors +
                     "\nRealesed:" + userMovie.year + "\nimdb rating:" + userMovie.imdbRating + "\nRotten Tomatoes Rating :" + userMovie.Ratings[1].Value
-                    + "\nCountry:" + userMovie.country + "language" + userMovie.language + "\nPlot" + userMovie.Plot + "\n\n - - -")
+                    + "\nCountry:" + userMovie.Country + "language" + userMovie.Language + "\nPlot" + userMovie.Plot + "\n\n - - -")
 
             }
             else {
