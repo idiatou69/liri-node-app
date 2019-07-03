@@ -14,18 +14,21 @@ var spotify = new Spotify(keys.spotify);
 // omdb and band in town api's
 var omdb = (keys.omdb);
 var bandsInTown = (keys.bandsInTown);
+var axios=require("axios");
 // take user command and innput
 var userInput = process.argv[2];
 var userQuery = process.argv.slice(3).join(" ");
 
+userCommand();
+
 // app logic
-function userCommand(userInput, userQuery) {
+function userCommand() {
     // make a decision based on the command
     switch (userInput) {
         case "concert-this":
             concertThis();
             break;
-        case "spotify-this":
+        case "spotify-this-song":
             spotifyThisSong();
             break;
         case "movie-this":
@@ -45,10 +48,10 @@ function concertThis() {
     console.log("\n - - - -SEARCHING FOR...." + userQuery + "s next show...");
 
     // user request as our url using our variable as the parameters
-    request("https://rest.bandsintown.com/artists/" + userQuery + "event?app_id" + bandsInTown + response, body)
+    axios.get("https://rest.bandsintown.com/artists/" + userQuery + "/events?app_id=codingbootcamp").then(function(response)
     {
         // if there is no error give us a 200 status code everything ok!
-        if (error && response.statusCode === 200) {
+        if ( response.statusCode === 200) {
             // capture data and use JSON to format
             var userBand = JSON.parse(body);
             // parse data and use for loop to access paths to data
@@ -71,9 +74,9 @@ function concertThis() {
                 console.log('band or consert not found!');
             };
         };
-    };
+    });
 
-
+}
     function spotifyThisSong() {
         console.log("\n - - - - -\n\nSEARCHING FOR..." + userQuery);
         // if user query query not found pass value of ace of basse
@@ -85,11 +88,11 @@ function concertThis() {
             }
             // collect selected data in an array
             var spotifyArr = data.tracks.items;
-            for (var i = 0; i < spotifyArr.length; i++) {
-                console.log("\nBA DA BOP! that's for you...\nArtist:" + data.tracks.items[i].album.artist[0].name + "\nSong:" +
-                    data.tracks.items[i].name + "\nSpotify link:" + data.tracks.items[i].external_urls.spotify + "\nAlbum:" +
-                    data.tracks.items[i].album.name + "\n\n - - - ")
-            };
+         for (var i = 0; i < spotifyArr.length; i++) {
+                console.log("\nBA DA BOP! that's for you...\nArtist:" + data.tracks.items[0].album.artists[i].name + "\nSong:" +
+                    data.tracks.items[0].name + "\nSpotify link:" + data.tracks.items[0].external_urls.spotify + "\nAlbum:" +
+                    data.tracks.items[0].album.name + "\n\n - - - ")
+             };
         });
 
     };
@@ -137,4 +140,4 @@ function concertThis() {
         });
     };
 
-};
+ 
