@@ -54,7 +54,7 @@ function concertThis() {
         //console.log(response)
 
          // capture data and use JSON to format
-         var userBand = JSON.parse(response);
+         var userBand = (response.data);
          // parse data and use for loop to access paths to data
 
          // for (var i = 0; i < userBand.length; i++) 
@@ -62,13 +62,13 @@ function concertThis() {
          if (userBand.length > 0) {
              for (i = 0; i < 1; i++) {
                  // console desired data using E6 syntax
-                 console.log("\nBA DA BOP! thats for you ...\n\Artist: " + userBand[i].lineUP[0] + "\nVenue: " + userBand[i]
-                     .venue.name + "\venue location: " + userBand[i].venue.latitude.serBand[i].venue.longitude + "\nVenue City:" +
-                     userBand[i].venue.city.userBand[i].venue.country)
+                 console.log("\nBA DA BOP! thats for you ...\n\Artist: " + userBand[i].lineup[0] + "\nVenue: " + userBand[i]
+                     .venue.name + "\nvenue location: " + userBand[i].venue.latitude,userBand[i].venue.longitude + "\nVenue City:" +
+                     userBand[i].venue.city,userBand[i].venue.country)
 
                  // moment.js to format the data mm/dd/yyyy
-                 var concertDate = moment(userBand[i].dateTime).format("mm/dd/yyy  hh:00 A");
-                 console.log("date and time: ${concertDate}\n\n- - - -");
+                 var concertDate = moment(userBand[i].dateTime).format("LLLL");
+                 console.log(`date and time: ${concertDate}\n\n- - - -`);
              };
 
          } else {
