@@ -114,9 +114,9 @@ function concertThis() {
                 // console.log("rating: ",JSON.parse(response.body));
                 
 
-                console.log("\nBA DA BOP! that's for you...\nTitle:" + userMovie.Title + "\nCast:" + userMovie.Actors +
-                    "\nRealesed:" + userMovie.year + "\nimdb rating:" + userMovie.imdbRating + "\nRotten Tomatoes Rating :" + userMovie.Ratings[1].Value
-                    + "\nCountry:" + userMovie.Country + "language" + userMovie.Language + "\nPlot" + userMovie.Plot + "\n\n - - -")
+                console.log("\nBA DA BOP! that's for you...\nTitle: " + userMovie.Title + "\nCast: " + userMovie.Actors +
+                    "\nRealesed: " + userMovie.Year+ "\nimdb rating:" + userMovie.imdbRating + "\nRotten Tomatoes Rating :" + userMovie.Ratings[1].Value
+                    + "\nCountry: " + userMovie.Country + "\nlanguage: " + userMovie.Language + "\nPlot: " + userMovie.Plot + "\n\n\- - -")
 
             }
             else {
