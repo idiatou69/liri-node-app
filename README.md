@@ -8,6 +8,8 @@ LIRI will search:
 
 Spotify for songs
 
+![spotify-this](spotify-this.PNG)
+
 Bands in Town for concerts
 
 OMDB for movies.
