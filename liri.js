@@ -11,8 +11,6 @@ var keys = require("./keys.js");
 // initialize spotify
 var Spotify = require("node-spotify-api")
 var spotify = new Spotify(keys.spotify);
-// omdb and band in town api's
-var omdb = (keys.omdb);
 var bandsInTown = (keys.bandsInTown);
 var axios=require("axios");
 // take user command and innput
