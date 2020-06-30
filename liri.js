@@ -22,6 +22,7 @@ userCommand();
 // app logic
 function userCommand() {
     // make a decision based on the command
+    
     switch (userInput) {
         case "concert-this":
             concertThis();
